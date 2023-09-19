@@ -2,6 +2,8 @@ import os
 from flask import Flask, redirect, url_for, request
 from groupy.client import Client
 
+#TODO Hook it up to spreadsheet.
+
 TOKEN = os.getenv('TOKEN')
 client = Client.from_token(TOKEN)
 
