@@ -1,9 +1,11 @@
 import os
-from flask import Flask, redirect, url_for, request
+from flask import Flask, render_template, request
 from groupy.client import Client
+from dotenv import load_dotenv
 
 #TODO Hook it up to spreadsheet.
 
+load_dotenv()
 TOKEN = os.getenv('TOKEN')
 client = Client.from_token(TOKEN)
 
@@ -30,6 +32,7 @@ def search_member():
         member = get_member(group, member_name)
         return member.data
 
-if __name__ == "__main__":
-    app.run(debug=True)
+@app.route('/')
+def index():
+    return render_template('index.html')
 
